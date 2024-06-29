@@ -1,0 +1,127 @@
+/* Estilos Base para todo el cuerpo y el formulario */
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #ffffff;  /* Fondo general en caso de que la imagen no cubra todo */
+}
+  
+  .container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;  /* Evita desbordamientos inesperados */
+  }
+  
+  .left-side {
+    background: url('/imagen_p.png') no-repeat center center;
+    background-size: cover;
+    flex: 1;  /* Ocupa la mitad de la pantalla en desktop */
+  }
+  
+  .right-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .login-title {
+    color: rgb(71, 99, 131); /* Establece el color del título del formulario */
+    text-align: center; /* Centra el título del formulario */
+  }
+  
+  .field-title {
+    text-align: left; /* Alinea a la izquierda los títulos de los campos */
+    margin-bottom: 5px; /* Espacio entre el título del campo y el input */
+  }
+  .login-form {
+    width: 300px;  /* Ancho del formulario */
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    background: white;  /* Fondo para el formulario */
+    text-align: center;
+  }
+  
+  h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .input-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  
+  .input-group .icon-container {
+    display: inline-block; /* Hace que el div se comporte como un elemento inline */
+    width: 20px;  /* Ancho del contenedor del ícono */
+    height: 20px; /* Altura del contenedor del ícono */
+    position: absolute; /* Para posicionamiento absoluto del ícono dentro de esto */
+  }
+  
+  .input-group .icon {
+    font-size: 20px; /* Tamaño del ícono FontAwesome */
+    position: relative; /* Posiciona el ícono absolutamente dentro del contenedor */
+    top: 50%; /* Centra el ícono verticalmente */
+    left: 50%; /* Centra el ícono horizontalmente */
+    color: #ccc; /* Color del ícono */
+  }
+  .eye-icon {
+    position: absolute;
+    top: 50%; /* Centra el ícono verticalmente */
+    left: 85%; /* Centra el ícono horizontalmente */
+    transform: translateY(-50%);
+    cursor: pointer; /* Cambia el cursor para indicar que es clickable */
+  }
+  input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px 40px 10px 40px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Añade padding dentro del ancho total */
+  }
+  
+  .login-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ff4500;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .login-btn:hover {
+    background-color: #e03e00;
+  }
+  
+  .links {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .links a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Estilos Responsive para Dispositivos Móviles */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;  /* Cambia la disposición a columna */
+    }
+  
+    .left-side, .right-side {
+      height: 50%;  /* Ajusta cada sección para que ocupe el 50% de la altura de la pantalla */
+      width: 100%;  /* Asegura que cada sección ocupe el ancho completo de la pantalla */
+    }
+  
+  }  
