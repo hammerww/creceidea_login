@@ -27,19 +27,19 @@ const LoginForm = () => {
     setRucError('');
     setPasswordError('');
     const myHeaders = new Headers({
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json'
     });
 
     const raw = JSON.stringify({
-      "email": ruc,
-      "password": password
+      'email': ruc,
+      'password': password
     });
 
     const requestOptions = {
-      method: "POST",
+      method: 'POST',
       headers: myHeaders,
       body: raw,
-      redirect: "follow"
+      redirect: 'follow' as RequestRedirect,
     };
 
     // fetch("https://api-auth.creceidea.pe/api/login", requestOptions)
@@ -101,7 +101,7 @@ const LoginForm = () => {
                 placeholder="10098765432"
                 value={ruc}
                 onChange={e => setRuc(e.target.value)}
-                className={`input text-left left-20 w-full pl-8 py-2 border-2 rounded-lg dark:bg-cyan-900 ${rucError ? 'border-rose-600 bg-pink-100' : 'border-blue-300'} focus:outline-none focus:border-blue-500`}
+                className={`input text-left left-20 w-full pl-8 py-2 border-2 rounded-lg dark:bg-cyan-900 ${rucError ? 'border-rose-600 bg-pink-100' : 'border-gray-300'} focus:outline-none focus:border-blue-500`}
               />
               {rucError && (
                 <div className="text-red-500 text-sm flex items-center mt-1">
