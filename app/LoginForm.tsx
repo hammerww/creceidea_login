@@ -1,7 +1,7 @@
 // app/LoginForm.tsx
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faKey, faEye, faEyeSlash,faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,7 +15,24 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const [rucError, setRucError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+
+    if (user && token) {
+      //router.replace('/home');
+      window.location.href = '/home';
+    }
+  }, []);
   
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+  if (!loaded) {
+    return null; // O renderiza un placeholder si prefieres
+  }
 
   const togglePasswordVisibility = () => {
     setPasswordShown(!passwordShown);
@@ -41,23 +58,6 @@ const LoginForm = () => {
       body: raw,
       redirect: 'follow' as RequestRedirect,
     };
-
-    // fetch("https://api-auth.creceidea.pe/api/login", requestOptions)
-    //   .then(response => response.json())
-    //   .then(result => {
-    //     if (result.status === "success") {
-    //       console.log(result.message); // Log del mensaje de éxito
-    //       // Redirige a /home y pasa los datos del usuario y el token
-    //       router.push('/home');
-    //       history.push('/home', { user: result.data.user, token: result.data.token });
-    //       navigate('/home', { state: { user: result.data.user, token: result.data.token } });
-    //     } else {
-    //       console.error('Login failed:', result.message);
-    //     }
-    //   })
-    //   .catch(error => {
-    //     console.error('Error:', error);
-    //   });
 
 
     try {

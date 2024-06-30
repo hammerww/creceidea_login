@@ -24,6 +24,7 @@ interface UserToken {
 const HomePage = () => {
   const [user, setUser] = useState<UserData | null>(null);
   const [token, setToken] = useState<UserToken | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
@@ -32,10 +33,22 @@ const HomePage = () => {
       setUser(JSON.parse(storedUser));
       setToken(JSON.parse(storedToken));
     }
+    else {
+      window.location.href = '/';
+    }
+    setLoading(false);
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    window.location.href = '/';
+  };
+
   if (!user || !token) {
-    return <div>Loading...</div>;
+    return <div className="flex items-center justify-center min-h-screen">
+    <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-gray-900"></div>
+  </div>;
   }
 
   return (
@@ -59,7 +72,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className="mt-4 text-center">
-          <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300">
+          <button onClick={handleLogout} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300">
             Cerrar sesión
           </button>
         </div>
