@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faKey, faEye, faEyeSlash,faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faKey, faEye, faEyeSlash,faExclamationCircle, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 import { useRouter } from 'next/router';
 
@@ -83,13 +83,26 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-screen overflow-hidden">
-      <div className="bg-cover bg-center w-full h-56 md:h-full md:flex-1" style={{ backgroundImage: "url('/imagen_p.png')" }}>
-        {/* La imagen y el diseño del lado izquierdo se controlan mediante CSS */}
+    <div className="flex md:flex-row h-screen relative">
+      <div className="bg-cover bg-center w-full h-full" style={{ backgroundImage: "url('/fondo_login.jpeg')" }}>
+        
+        <div className="absolute top-0 left-0 p-5">
+          <img src="/logo-creceidea.svg" alt="Logo" className="h-10" />
+        </div>
       </div>
-      <div className="flex-1 flex items-center justify-center p-4 dark:bg-cyan-900">
-        <form className="w-full max-w-sm p-5 rounded  text-center" onSubmit={handleLogin}>
-          <h2 className="text-2xl text-left text-gray-700 font-bold mb-5 dark:text-white">Iniciar Sesión</h2>
+
+      <div className="absolute top-0 right-0 p-10 h-full flex items-center justify-end ">
+        <form className="w-full max-w-sm p-5 rounded-lg text-center bg-neutral-300  dark:bg-cyan-900 shadow-2xl md:m-4 opacity-95  relative" onSubmit={handleLogin}>
+
+        <div className="flex justify-between items-center bg-neutral-300 dark:bg-cyan-900 ">
+            <h2 className=" text-2xl text-cyan-800 dark:text-white dark:bg-cyan-900 font-bold">Iniciar Sesión</h2>
+            <div className="flex items-center text-gray-600 bg-neutral-300 dark:bg-cyan-900 cursor-pointer -mt-20 -mr-5 px-2 rounded">
+              <FontAwesomeIcon icon={faPhone} className="text-xs dark:text-white"/>
+              <span className="m-1 text-xs dark:text-white">Soporte</span>
+            </div>
+          </div>
+
+          {/* <h2 className="text-2xl text-center text-cyan-800 font-bold mb-5 dark:text-white">Iniciar Sesión</h2> */}
           <div className={`input-group ${rucError ? 'outline-black-500' : 'border-gray-100'}`}>
             <h3 className="field-title text-left pt-6">RUC</h3>
             <div className="relative h-30">
